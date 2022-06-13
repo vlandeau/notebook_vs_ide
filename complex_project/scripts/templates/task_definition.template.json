@@ -1,0 +1,53 @@
+{
+  "containerDefinitions": [
+    {
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "protocol": "tcp",
+          "containerPort": 80
+        }
+      ],
+      "command": [
+        "python",
+        "-m",
+        "bootcamp_2021_01.gui.ekilibr8",
+        "--backend",
+        "S3",
+        "--bucket-name",
+        "bootcamp-2021-01-data",
+        "--export-run-id",
+        "validation"
+      ],
+      "environment": [
+        {
+          "name": "EKILIBR8_PORT",
+          "value": "80"
+        }
+      ],
+      "repositoryCredentials": {
+        "credentialsParameter": "arn:aws:secretsmanager:eu-west-1:366851335136:secret:ekinox/dockerhub-ygI0vw"
+      },
+      "secrets": [
+        {
+          "name": "AWS_ACCESS_KEY_ID",
+          "valueFrom": "arn:aws:secretsmanager:eu-west-1:366851335136:secret:ekinox/aws-TCv0ht:AWS_ACCESS_KEY_ID::"
+        },
+        {
+          "name": "AWS_SECRET_ACCESS_KEY",
+          "valueFrom": "arn:aws:secretsmanager:eu-west-1:366851335136:secret:ekinox/aws-TCv0ht:AWS_SECRET_ACCESS_KEY::"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/Ekilibr8-Test",
+          "awslogs-region": "eu-west-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "image": "CHANGE ME",
+      "name": "dash"
+    }
+  ]
+}

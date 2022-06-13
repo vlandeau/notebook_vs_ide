@@ -1,0 +1,31 @@
+
+
+[cols="1,2,5"]
+|===
+| Data Source | Name prefix | URL
+
+| VC Holy Grail
+| vc_holy_grail
+| https://github.com/alexnakagawa/vc_holy_grail/tree/master/Deprecated/data
+
+| Datahoarder
+| datahoardeer
+| https://github.com/datahoarder/crunchbase-october-2013
+
+| NotPeter
+| notpeter
+| https://github.com/notpeter/crunchbase-data
+
+| VLBA Bachelorarbeit Weinert
+| bachelorarbeit
+| https://gitlab.uni-oldenburg.de/heja3093/vlba_bachelorarbeit_weinert/tree/5782fc0bfcea659b1f5a0134dffe9310d2ec27ca/Crunchbase
+|===
+
+== vc_holy_grail_people cleaned
+
+Remove characters from unknown encoding:
+[source, bash]
+----
+iconv -ct UTF8 workdir/landing/raw/vc_holy_grail_people/vc_holy_grail/people.csv > cleaned.csv
+----
+

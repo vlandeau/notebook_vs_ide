@@ -1,0 +1,32 @@
+FROM python:3.7.1-slim
+
+RUN apt-get update && \
+    apt-get install -y make git build-essential && \
+    apt-get clean && \
+    pip install poetry
+
+COPY ./.secrets/id_rsa /root/.ssh/id_rsa
+RUN chmod 600 /root/.ssh/id_rsa
+RUN ssh-keyscan -H gitlab.com >> /root/.ssh/known_hosts
+
+COPY ./poetry.lock /app/
+COPY ./pyproject.toml /app/
+COPY ./Makefile /app/
+
+WORKDIR /app/
+
+ENV PIP_NO_CACHE_DIR="false"
+
+RUN make setup-env-dev && \
+    make setup-env-dash
+
+COPY bootcamp_2021_01 /app/bootcamp_2021_01
+COPY tests /app/tests
+
+COPY entrypoint.sh /root/entrypoint.sh
+
+RUN chmod o+x /root/entrypoint.sh
+
+ENTRYPOINT ["/root/entrypoint.sh"]
+
+CMD ["python"]
