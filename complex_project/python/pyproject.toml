@@ -43,6 +43,8 @@ jedi = "0.17.2"
 catboost = "^0.24.4"
 shap = "^0.38.1"
 pilotis = "^0.1.0"
+treon = "^0.1.3"
+pilotis-io = "^0.2.0"
 
 [tool.poetry.extras]
 notebook = ["jupyter", "jupyter-contrib-nbextensions", "dash", "jupytext"]
