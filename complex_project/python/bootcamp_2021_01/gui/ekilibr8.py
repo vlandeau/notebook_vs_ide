@@ -4,9 +4,9 @@ from typing import Optional, Union
 import click
 import dash
 from click import UsageError
-from ekinox_ds.io import IoAPI
-from ekinox_ds.local.local_io_api import LocalIoApi
-from ekinox_ds.s3.s3_io_api import S3IoAPI
+from pilotis_io.io import IoAPI
+from pilotis_io.local.local_io_api import LocalIoApi
+from pilotis_io.s3.s3_io_api import S3IoAPI
 
 from bootcamp_2021_01.gui import options
 from bootcamp_2021_01.gui.ekilibr8_state import Ekilibr8
